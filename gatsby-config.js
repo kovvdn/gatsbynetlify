@@ -4,6 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby',
   },
+  pathPrefix: '/ghpages',
   plugins: [
     'gatsby-plugin-react-helmet',
     {
