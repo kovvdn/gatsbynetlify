@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 
 import Img from 'gatsby-image'
 import Menu from './menu'
@@ -53,8 +53,10 @@ class Header extends Component {
       billboard,
       location: { pathname },
     } = this.props
+
+    console.log(pathname)
     return (
-      <HeaderWrapper isIndexPage={pathname === '/'}>
+      <HeaderWrapper isIndexPage={pathname === withPrefix('/')}>
         <HeaderContainer>
           <h1 style={{ margin: 0 }}>
             <Link
