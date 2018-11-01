@@ -1,5 +1,4 @@
 ---
-path: '/post-one'
 title: 'Mumblecore cardigan cold-pressed'
 author: 'kovvdn'
 date: '2018-12-12'
