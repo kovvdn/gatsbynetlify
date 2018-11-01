@@ -8,6 +8,9 @@ collections:
     folder: src/data
     create: true
     slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    filter:
+      field: language
+      value: ru
     fields: # The fields for each document, usually in front matter
       - { label: 'Title', name: 'title', widget: 'string' }
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
