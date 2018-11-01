@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
@@ -15,51 +15,59 @@ const ContentContainer = Container.extend`
   padding-top: 0;
 `
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-        file(id: { eq: "0d8dba97-7c4c-5ff7-9281-27f4e357571b" }) {
-          name
-          childImageSharp {
-            fluid(maxWidth: 1440) {
-              ...GatsbyImageSharpFluid
+class Layout extends Component {
+  componentDidMount() {}
+  render() {
+    const { children } = this.props
+    return (
+      <StaticQuery
+        query={graphql`
+          query SiteTitleQuery {
+            site {
+              siteMetadata {
+                title
+              }
+            }
+
+            file(name: { eq: "architecture" }) {
+              id
+              name
+              childImageSharp {
+                fluid(maxWidth: 1440) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
             }
           }
-        }
-      }
-    `}
-    render={data => (
-      <>
-        <Helmet
-          title={data.site.siteMetadata.title}
-          meta={[
-            { name: 'description', content: 'Sample' },
-            { name: 'keywords', content: 'sample, something' },
-          ]}
-        >
-          <html lang="en" />
-        </Helmet>
-        <Location>
-          {({ location }) => (
-            <Header
-              siteTitle={data.site.siteMetadata.title}
-              billboard={data.file.childImageSharp.fluid}
-              location={location}
-            />
-          )}
-        </Location>
+        `}
+        render={data => (
+          <>
+            <Helmet
+              title={data.site.siteMetadata.title}
+              meta={[
+                { name: 'description', content: 'Sample' },
+                { name: 'keywords', content: 'sample, something' },
+              ]}
+            >
+              <html lang="en" />
+            </Helmet>
+            <Location>
+              {({ location }) => (
+                <Header
+                  siteTitle={data.site.siteMetadata.title}
+                  billboard={data.file.childImageSharp.fluid}
+                  location={location}
+                />
+              )}
+            </Location>
 
-        <ContentContainer>{children}</ContentContainer>
-      </>
-    )}
-  />
-)
+            <ContentContainer>{children}</ContentContainer>
+          </>
+        )}
+      />
+    )
+  }
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,

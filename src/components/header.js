@@ -44,17 +44,12 @@ const HeaderContainer = Container.extend`
 `
 
 class Header extends Component {
-  componentDidUpdate(prevProps, prevState) {
-    console.log('test')
-  }
   render() {
     const {
       siteTitle,
       billboard,
       location: { pathname },
     } = this.props
-
-    console.log(pathname)
     return (
       <HeaderWrapper isIndexPage={pathname === withPrefix('/')}>
         <HeaderContainer>
