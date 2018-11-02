@@ -15,3 +15,4 @@ collections:
       - { label: 'Image', name: 'image', widget: 'image' }
 
 media_folder: static/assets
+public_folder: /assets
